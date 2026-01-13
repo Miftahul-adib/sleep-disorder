@@ -11,6 +11,11 @@ This repository contains the official implementation of **"A Dual Pipeline Machi
 
 Our framework achieves **98.67% accuracy** on the Sleep Health and Lifestyle Dataset, surpassing current benchmarks through a novel dual-pipeline architecture that captures both linear and non-linear feature dependencies.
 
+---
+
+## Main paper:
+
+- [Paper (arXiv)](https://arxiv.org/abs/xxxx.xxxxx)
 
 ---
 
@@ -195,18 +200,27 @@ We applied **SMOTETomek** to handle class imbalance, resampling the minority cla
 
 ---
 
-## 🏆 Benchmarking
 
-Our framework sets a new state-of-the-art on the Sleep Health and Lifestyle Dataset:
 
-| Study | Year | Model | Accuracy |
-|-------|------|-------|----------|
-| **This Work** | **2026** | **Extra Trees (Pipeline 2)** | **98.67%** |
-| Rahman et al. | 2025 | Gradient Boosting | 97.33% |
-| Monowar et al. | 2025 | Ensemble Model | 96.88% |
-| Satyavathi et al. | 2025 | Decision Tree | 96.00% |
-| Alshammari et al. | 2024 | ANN | 92.92% |
-| Hidayat et al. | 2023 | Random Forest | 88.00% |
+## Sleep Disorder Classification - Comparative Analysis
+
+## Table : Comparative analysis of the proposed framework against recent state of the art studies in sleep disorder classification
+
+| Study | Dataset | Model | Accuracy |
+|-------|---------|-------|----------|
+| This study | Sleep Health & Lifestyle Dataset | Extra Trees Classifier | 98.667% |
+| Ahadian et al.(2024)[1] | Multilevel Monitoring of Activity and Sleep in Healthy People | Long Short-Term Memory(LSTM) | 90% |
+| Alshammari et al.(2024)[2] | Sleep Health & Lifestyle Dataset | Artificial Neural Networks(ANN) | 92.92% |
+| Rahman et al.(2025)[6] | Sleep Health & Lifestyle Dataset | Gradient Boosting | 97.33% |
+| Monowar et al.(2025)[7] | Sleep Health & Lifestyle Dataset | Ensemble Model | 96.88% |
+| Hidayat et al.(2023)[17] | Sleep Health & Lifestyle Dataset | Random Forest | 88% |
+| Dritsas et al.(2024)[21] | NHANES Dataset | SVM Polynomial | 91.44% |
+| Han et al.(2023)[54] | Sleep Clinic of Samsung Medical Center | K-means Clustering | 91% |
+| Satyavathi et al.(2025)[55] | Sleep Health & Lifestyle Dataset | Decision Tree | 96% |
+| Alom et al.(2024)[56] | Sleep Health & Lifestyle Dataset | ANN Bagging ANN Boosting | 94.7% |
+| Panda et al.(2025)[57] | Sleep Health & Lifestyle Dataset | Random Forest | 96% |
+| Taher et al.(2024)[58] | Sleep Health & Lifestyle Dataset | Gradient Boosting | 93.8% |
+| Zhu et al.(2023)[59] | Montreal Archive of Sleep Studies (MASS) | SwSleepNet | 86.7% |
 
 **Improvement**: +1.34 percentage points over previous best
 
@@ -231,23 +245,11 @@ This project is licensed under the MIT License
 
 
 
----
-
-## 📞 Contact
-
-For questions or collaboration inquiries:
-
-- **Email**: [your.email@university.edu]
-- **Issues**: [GitHub Issues](https://github.com/yourusername/sleep-disorder-screening/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/sleep-disorder-screening/discussions)
 
 ---
 
 
 
-## 📚 Additional Resources
-
-- [Paper (arXiv)](https://arxiv.org/abs/xxxx.xxxxx)
 
 
 ---
