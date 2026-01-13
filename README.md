@@ -67,32 +67,7 @@ Coupled with **SMOTETomek** hybrid resampling, our Extra Trees and KNN models ac
 
 ---
 
-## 🏗️ System Architecture
-```mermaid
-graph TB
-    A[Raw Dataset374 samples, 13 features] --> B[Preprocessing]
-    B --> C[Feature Engineering7 Interaction Features]
-    C --> D[SMOTETomekBalanced Dataset]
-    D --> E{Dual Pipeline}
-    
-    E --> F[Pipeline 1: Statistical]
-    E --> G[Pipeline 2: Wrapper-Based]
-    
-    F --> F1[RobustScaler]
-    F1 --> F2[Mutual Information]
-    F2 --> F3[LDA]
-    F3 --> F4[KNN, LogReg, XGBoost]
-    
-    G --> G1[MinMaxScaler]
-    G1 --> G2[Boruta Selection]
-    G2 --> G3[Autoencoder]
-    G3 --> G4[Extra Trees, LightGBM]
-    
-    F4 --> H[98.67% Accuracy]
-    G4 --> H
 
-
----
 
 ## 🛠️ Methodology
 
@@ -158,23 +133,7 @@ df['Sqrt_Sleep'] = np.sqrt(df['Sleep_Duration'])
 - Sleep Apnea: 78 samples
 - Insomnia: 77 samples
 
-**Solution: SMOTETomek Hybrid Resampling**
-```python
-from imblearn.combine import SMOTETomek
-from imblearn.over_sampling import SMOTE
-from imblearn.under_sampling import TomekLinks
 
-# Initialize hybrid resampler
-smt = SMOTETomek(
-    smote=SMOTE(sampling_strategy='auto', random_state=42, k_neighbors=5),
-    tomek=TomekLinks(sampling_strategy='auto')
-)
-
-# Apply resampling
-X_resampled, y_resampled = smt.fit_resample(X_train, y_train)
-```
-
-**Result**: Balanced classes (~173-175 samples each) with clearer decision boundaries.
 
 ---
 
@@ -326,77 +285,7 @@ seaborn>=0.12.0
 
 ---
 
-### Usage
 
-#### 1️⃣ Data Preprocessing & Feature Engineering
-```bash
-jupyter notebook notebooks/1_EDA_Feature_Engineering.ipynb
-```
-
-This notebook will:
-- Load the raw dataset
-- Split Blood Pressure into Systolic/Diastolic
-- Encode categorical variables
-- Create 7 interaction features
-- Output `processed_data.csv`
-
-#### 2️⃣ Train the Best Model (Extra Trees - 98.67%)
-```bash
-jupyter notebook notebooks/3_Pipeline2_Wrapper.ipynb
-```
-
-Or use the Python script:
-```python
-from src.pipelines import train_pipeline_2
-from src.preprocessing import load_and_preprocess
-
-# Load data
-X, y = load_and_preprocess('data/sleep_health_lifestyle_dataset.csv')
-
-# Train Pipeline 2 (Boruta + Autoencoder + Extra Trees)
-model, results = train_pipeline_2(X, y, use_smote=True)
-
-print(f"Accuracy: {results['accuracy']:.4f}")
-print(f"F1 Score: {results['f1']:.4f}")
-
-# Save model
-import joblib
-joblib.dump(model, 'models/saved_models/extra_trees_best.pkl')
-```
-
-#### 3️⃣ Make Predictions
-```python
-import joblib
-import pandas as pd
-from src.preprocessing import preprocess_input
-
-# Load trained model
-model = joblib.load('models/saved_models/extra_trees_best.pkl')
-
-# New patient data
-patient_data = {
-    'Gender': 'Male',
-    'Age': 35,
-    'Sleep_Duration': 6.5,
-    'Quality_of_Sleep': 7,
-    'Physical_Activity_Level': 60,
-    'Stress_Level': 6,
-    'BMI_Category': 'Overweight',
-    'Blood_Pressure': '130/85',
-    'Heart_Rate': 75,
-    'Daily_Steps': 8000,
-    'Occupation': 'Engineer'
-}
-
-# Preprocess and predict
-X_new = preprocess_input(patient_data)
-prediction = model.predict(X_new)
-
-disorder_map = {0: 'Insomnia', 1: 'None', 2: 'Sleep Apnea'}
-print(f"Predicted Sleep Disorder: {disorder_map[prediction[0]]}")
-```
-
----
 
 ## 🔍 Key Insights
 
@@ -428,40 +317,7 @@ Top 10 Most Important Features:
 
 ---
 
-## 🧪 Reproduce Experiments
 
-### Run Full Experiment Suite
-```bash
-# Run all notebooks in sequence
-python scripts/run_experiments.py
-
-# Or manually:
-jupyter nbconvert --execute notebooks/1_EDA_Feature_Engineering.ipynb
-jupyter nbconvert --execute notebooks/2_Pipeline1_Statistical.ipynb
-jupyter nbconvert --execute notebooks/3_Pipeline2_Wrapper.ipynb
-jupyter nbconvert --execute notebooks/4_Evaluation_Ablation.ipynb
-```
-
-### Cross-Validation
-```python
-from sklearn.model_selection import StratifiedKFold
-from src.pipelines import train_pipeline_2
-
-skf = StratifiedKFold(n_splits=8, shuffle=True, random_state=42)
-scores = []
-
-for train_idx, val_idx in skf.split(X, y):
-    X_train, X_val = X[train_idx], X[val_idx]
-    y_train, y_val = y[train_idx], y[val_idx]
-    
-    model, _ = train_pipeline_2(X_train, y_train)
-    score = model.score(X_val, y_val)
-    scores.append(score)
-
-print(f"Mean Accuracy: {np.mean(scores):.4f} ± {np.std(scores):.4f}")
-```
-
----
 
 ## 📜 Citation
 
