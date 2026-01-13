@@ -204,7 +204,7 @@ We applied **SMOTETomek** to handle class imbalance, resampling the minority cla
 
 ## Sleep Disorder Classification - Comparative Analysis
 
-## Table : Comparative analysis of the proposed framework against recent state of the art studies in sleep disorder classification
+#### Comparative analysis of the proposed framework against recent state of the art studies in sleep disorder classification
 
 | Study | Dataset | Model | Accuracy |
 |-------|---------|-------|----------|
