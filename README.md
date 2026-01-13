@@ -1,6 +1,4 @@
-# A Dual Pipeline Machine Learning Framework for
-Automated Multi Class Sleep Disorder Screening
-Using Hybrid Resampling and Ensemble Learning
+# A Dual Pipeline Machine Learning Framework for Automated Multi Class Sleep Disorder Screening Using Hybrid Resampling and Ensemble Learning
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
