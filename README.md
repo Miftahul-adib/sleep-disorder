@@ -75,28 +75,28 @@ This dual approach ensures both linear separability and non-linear interaction c
 
 ## ✨ Key Features
 
-### 1. **Dual-Pipeline Architecture**
+#### 1. **Dual-Pipeline Architecture**
 - **Pipeline 1**: Optimizes for linear dependencies using statistical methods
 - **Pipeline 2**: Captures non-linear interactions through wrapper-based selection
 
-### 2. **Hybrid Resampling Strategy**
+#### 2. **Hybrid Resampling Strategy**
 Addresses severe class imbalance (Healthy: 219, Apnea: 78, Insomnia: 77):
 - **SMOTE**: Synthetic minority oversampling
 - **Tomek Links**: Decision boundary cleaning
 
-### 3. **Comprehensive Feature Engineering**
+#### 3. **Comprehensive Feature Engineering**
 - 8 custom interaction features capturing physiological dependencies
 - Tree-based importance ranking
 - Cross-validated feature stability analysis
 
-### 4. **Rigorous Validation**
+#### 4. **Rigorous Validation**
 - Stratified 8-fold cross-validation
 - Wilcoxon Signed-Rank Test for statistical significance
 - Multiple performance metrics (Accuracy, F1, Recall, Precision)
 
 ---
 
-## 📊 Dataset
+### 📊 Dataset
 
 **Sleep Health and Lifestyle Dataset** (Sourced from Kaggle)
 * **Samples**: 374 clinical entries.
@@ -106,7 +106,7 @@ Addresses severe class imbalance (Healthy: 219, Apnea: 78, Insomnia: 77):
 
 
 ---
-## 🛠 Methodology
+### 🛠 Methodology
 
 
 <p align="center">
@@ -136,14 +136,14 @@ We applied **SMOTETomek** to handle class imbalance, resampling the minority cla
 
 ### 4. Dual Pipeline Processing
 
-#### Pipeline 1: Statistical
+##### Pipeline 1: Statistical
 ```python
 # Scaling: RobustScaler (median/IQR normalization)
 # Selection: Mutual Information (relevance filtering)
 # Reduction: LDA (linear projection)
 ```
 
-#### Pipeline 2: Wrapper-Based
+##### Pipeline 2: Wrapper-Based
 ```python
 # Scaling: MinMaxScaler ([0,1] normalization)
 # Selection: Boruta (shadow feature comparison)
@@ -163,11 +163,11 @@ We applied **SMOTETomek** to handle class imbalance, resampling the minority cla
 
 
 
-## 📈 Results
+### Results
 
-### Top Performing Models
+#### Top Performing Models
 
-### Optimal performance metrics for Pipeline 1 utilizing statistical feature engineering and hybrid resampling strategies
+##### Optimal performance metrics for Pipeline 1 utilizing statistical feature engineering and hybrid resampling strategies
 
 | ML Model | Configuration | Accuracy | F1 Score | Recall | Precision |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -183,7 +183,7 @@ We applied **SMOTETomek** to handle class imbalance, resampling the minority cla
 
 <br>
 
-### Optimal performance metrics for Pipeline 2 utilizing wrapper-based feature selection and non-linear dimensionality reduction
+##### Optimal performance metrics for Pipeline 2 utilizing wrapper-based feature selection and non-linear dimensionality reduction
 
 | ML Model | Configuration | Accuracy | F1 Score | Recall | Precision |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -197,13 +197,13 @@ We applied **SMOTETomek** to handle class imbalance, resampling the minority cla
 | MLP Classifier | Autoencoder + SMOTETomek | 93.333% | 91.676% | 93.422% | 90.278% |
 | LightGBM | MinMaxScaler | 97.333% | 95.694% | 95.694% | 95.694% |
 
-### Statistical Validation
+##### Statistical Validation
 
 - **Wilcoxon Signed-Rank Test**: p = 0.00391 (W = 36.0)
 - **Significance Level**: p < 0.05 ✓
 - **Conclusion**: Performance gains are statistically significant
 
-### Computational Efficiency
+##### Computational Efficiency
 
 - **Inference Latency**: < 400ms per prediction
 - **Training Time (Best Model)**: 1.04 seconds (KNN, Pipeline 1)
@@ -213,9 +213,9 @@ We applied **SMOTETomek** to handle class imbalance, resampling the minority cla
 
 
 
-## Sleep Disorder Classification - Comparative Analysis
+#### Sleep Disorder Classification - Comparative Analysis
 
-#### Comparative analysis of the proposed framework against recent state of the art studies in sleep disorder classification
+##### Comparative analysis of the proposed framework against recent state of the art studies in sleep disorder classification
 
 | Study | Dataset | Model | Accuracy |
 |-------|---------|-------|----------|
@@ -237,7 +237,7 @@ We applied **SMOTETomek** to handle class imbalance, resampling the minority cla
 
 ---
 
-## 📄 Citation
+### 📄 Citation
 
 If you use this code or methodology in your research, please cite:
 ```bibtex
@@ -250,7 +250,7 @@ If you use this code or methodology in your research, please cite:
 
 
 
-## 📝 License
+#### 📝 License
 
 This project is licensed under the MIT License 
 
