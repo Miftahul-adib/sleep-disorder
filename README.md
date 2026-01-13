@@ -100,8 +100,9 @@ Addresses severe class imbalance (Healthy: 219, Apnea: 78, Insomnia: 77):
 - Created 8 interaction features
 - Tree-based importance analysis
 - Information gain ranking
-
-<img src="Images/Feature importance.png" alt="Feature importance" width="200">
+<p align="center">
+  <img src="Images/Feature importance.png" alt="Feature importance" width="600">
+</p>
 ### 2. Train-Test Split
 - **80/20 stratified split** preserving class distribution
 
