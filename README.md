@@ -137,26 +137,6 @@ We applied **SMOTETomek** to handle class imbalance, resampling the minority cla
 ---
 
 
-### Setup
-
-
-
-### Required Packages
-```txt
-numpy>=1.21.0
-pandas>=1.3.0
-scikit-learn>=1.0.0
-imbalanced-learn>=0.9.0
-xgboost>=1.5.0
-lightgbm>=3.3.0
-boruta>=0.3.0
-tensorflow>=2.8.0  # For Autoencoders
-matplotlib>=3.4.0
-seaborn>=0.11.0
-scipy>=1.7.0
-```
-
----
 
 
 
