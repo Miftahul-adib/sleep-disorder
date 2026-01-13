@@ -1,377 +1,284 @@
-<div align="center">
+# Dual-Pipeline Framework for Sleep Disorder Screening
 
-# 🧠 Dual-Pipeline Framework for Automated Sleep Disorder Screening
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Accuracy](https://img.shields.io/badge/Accuracy-98.67%25-brightgreen.svg)](https://github.com/yourusername/sleep-disorder-screening)
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Accuracy](https://img.shields.io/badge/Accuracy-98.67%25-brightgreen.svg)](README.md)
-[![Paper](https://img.shields.io/badge/Paper-2026-red.svg)](README.md)
+> **State-of-the-Art Solution for Multi-Class Sleep Disorder Classification**
 
-**State-of-the-Art Solution (98.67% Accuracy) on Sleep Health & Lifestyle Dataset**
+This repository contains the official implementation of **"A Dual Pipeline Machine Learning Framework for Automated Multi-Class Sleep Disorder Screening Using Hybrid Resampling and Ensemble Learning"** (2026).
 
-[Installation](#-installation) • [Features](#-key-features) • [Usage](#-quick-start) • [Results](#-results) • [Citation](#-citation)
-
-</div>
+Our framework achieves **98.67% accuracy** on the Sleep Health and Lifestyle Dataset, surpassing current benchmarks through a novel dual-pipeline architecture that captures both linear and non-linear feature dependencies.
 
 ---
 
-## 📋 Overview
+## 🎯 Highlights
 
-This repository contains the official implementation of **"A Dual Pipeline Machine Learning Framework for Automated Multi-Class Sleep Disorder Screening Using Hybrid Resampling and Ensemble Learning"**.
-
-Our solution introduces a **bifurcated feature engineering architecture** that separates linear statistical processing from non-linear wrapper-based selection, achieving a new benchmark accuracy of **98.67%**, significantly outperforming recent 2025 SOTA approaches.
-
-### 🎯 Key Highlights
-
-- 🏆 **98.67% Accuracy** - New SOTA on Sleep Health & Lifestyle Dataset
-- ⚡ **<400ms Inference** - Real-time prediction capability
-- 🔄 **Dual-Pipeline Architecture** - Optimized for both linear and non-linear models
-- 📊 **Hybrid Resampling** - SMOTETomek for balanced class distribution
-- 🧪 **Statistically Validated** - Wilcoxon test (p=0.00391)
+- ** State-of-the-Art Performance**: 98.67% accuracy (vs. 97.33% previous best)
+- ** Novel Architecture**: Dual-pipeline design for comprehensive feature processing
+- ** Advanced Balancing**: SMOTETomek hybrid resampling for class imbalance
+- ** Statistical Validation**: Wilcoxon Signed-Rank Test confirms significance (p=0.00391)
+- ** Real-Time Ready**: Inference under 400ms for clinical deployment
 
 ---
 
-## 👥 Authors
+## 📋 Table of Contents
 
-<table>
-<tr>
-<td align="center">
-<strong>Md Sultanul Islam Ovi</strong><br>
-George Mason University
-</td>
-<td align="center">
-<strong>Muhsina Tarannum Munfa</strong><br>
-Metropolitan University, Sylhet
-</td>
-<td align="center">
-<strong>Miftahul Alam Adib</strong><br>
-Shahjalal University of Science and Technology, Sylhet
-</td>
-<td align="center">
-<strong>Syed Sabbir Hasan</strong><br>
-Shahjalal University of Science and Technology, 
-</td>
-</tr>
-</table>
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Dataset](#dataset)
+- [Methodology](#methodology)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Results](#results)
+- [Benchmarking](#benchmarking)
+- [Citation](#citation)
+- [Authors](#authors)
+- [License](#license)
 
 ---
 
-## 📝 Abstract
+## 🔍 Overview
 
-Accurate classification of sleep disorders (Insomnia, Sleep Apnea) is vital but traditionally relies on resource-intensive **Polysomnography (PSG)**. We propose a **Dual-Pipeline Framework** that processes lifestyle and physiological data through two parallel streams:
+Sleep disorders affect millions globally, yet accurate multi-class screening remains challenging. This framework addresses the problem of classifying patients into three categories:
 
-- **Statistical Pipeline**: Focuses on linear separability via Mutual Information and LDA
-- **Wrapper-Based Pipeline**: Leverages Boruta selection and Autoencoders for non-linear interactions
+- **Insomnia** (Class 0)
+- **Healthy/None** (Class 1)
+- **Sleep Apnea** (Class 2)
 
-Coupled with **SMOTETomek** hybrid resampling, our Extra Trees and KNN models achieved **98.67% accuracy** with inference latency under **400ms**.
+### Architecture Philosophy
+
+We employ a **bifurcated processing approach**:
+```
+Input Data
+    ├── Pipeline 1 (Statistical Path)
+    │   ├── RobustScaler
+    │   ├── Mutual Information Selection
+    │   └── Linear Discriminant Analysis (LDA)
+    │
+    └── Pipeline 2 (Wrapper-Based Path)
+        ├── MinMaxScaler
+        ├── Boruta Feature Selection
+        └── Autoencoder Compression
+```
+
+This dual approach ensures both linear separability and non-linear interaction capture.
 
 ---
 
+## ✨ Key Features
 
+### 1. **Dual-Pipeline Architecture**
+- **Pipeline 1**: Optimizes for linear dependencies using statistical methods
+- **Pipeline 2**: Captures non-linear interactions through wrapper-based selection
 
-## 🛠️ Methodology
+### 2. **Hybrid Resampling Strategy**
+Addresses severe class imbalance (Healthy: 219, Apnea: 78, Insomnia: 77):
+- **SMOTE**: Synthetic minority oversampling
+- **Tomek Links**: Decision boundary cleaning
 
-### 1️⃣ Data Preprocessing
+### 3. **Comprehensive Feature Engineering**
+- 8 custom interaction features capturing physiological dependencies
+- Tree-based importance ranking
+- Cross-validated feature stability analysis
 
-**Dataset**: Sleep Health & Lifestyle (374 samples, 13 features)
+### 4. **Rigorous Validation**
+- Stratified 8-fold cross-validation
+- Wilcoxon Signed-Rank Test for statistical significance
+- Multiple performance metrics (Accuracy, F1, Recall, Precision)
 
-#### Transformations Applied:
+---
+
+## 📊 Dataset
+
+**Sleep Health and Lifestyle Dataset**
+
+The dataset integrates:
+- Physiological parameters (heart rate, blood pressure, sleep duration)
+- Lifestyle factors (physical activity, stress levels, BMI)
+- Demographic information (age, gender, occupation)
+
+**Preprocessing Steps**:
+1. Data integrity verification (zero null values confirmed)
+2. Occupation grouping to reduce sparsity
+3. Label encoding for ordinal variables
+4. One-hot encoding for nominal features
+
+---
+
+## 🛠 Methodology
+
+### 1. Data Preprocessing
 ```python
-# Blood Pressure Splitting
-df[['Systolic_BP', 'Diastolic_BP']] = df['Blood_Pressure'].str.split('/', expand=True).astype(int)
-
-# Categorical Encoding
-label_encoding = {
-    'Gender': {'Female': 0, 'Male': 1},
-    'Sleep_Disorder': {'Insomnia': 0, 'None': 1, 'Sleep Apnea': 2}
-}
-
-# One-Hot Encoding for Occupation
-df = pd.get_dummies(df, columns=['Occupation'], drop_first=True)
-
-# BMI Category - Mean Clinical Value Mapping
-bmi_mapping = {
-    'Underweight': 17.5,
-    'Normal': 21.7,
-    'Overweight': 27.5,
-    'Obese': 32.5
-}
+# Zero null values confirmed
+# Occupation grouping applied
+# Encoding: Label (ordinal) + One-Hot (nominal)
 ```
 
----
+### 2. Feature Engineering
+- Created 8 interaction features
+- Tree-based importance analysis
+- Information gain ranking
 
-### 2️⃣ Feature Engineering
+### 3. Train-Test Split
+- **80/20 stratified split** preserving class distribution
 
-We engineered **7 interaction features** to capture hidden physiological dependencies:
-
-| Feature | Formula | Rationale |
-|---------|---------|-----------|
-| `Stress_Sleep_Interaction` | `Stress / Quality_of_Sleep` | Inverse correlation between stress & sleep quality |
-| `Sleep_Heart_Ratio` | `Sleep_Duration × Heart_Rate` | Physiological rest efficiency vs. cardiovascular load |
-| `Sleep_Steps_Ratio` | `Sleep_Duration × Daily_Steps` | Balance between physical exertion & recovery |
-| `Sleep_Stress_Ratio` | `Sleep_Duration × Stress_Level` | Adequacy of sleep relative to stress exposure |
-| `BMI_Activity` | `BMI × Physical_Activity` | Combined body composition & exertion influence |
-| `Pulse_Pressure` | `Systolic_BP - Diastolic_BP` | Indicator of arterial stiffness |
-| `Sqrt_Sleep` | `√(Sleep_Duration)` | Variance stabilization for sleep distribution |
+### 4. Class Balancing
 ```python
-# Feature Engineering Implementation
-df['Stress_Sleep_Interaction'] = df['Stress_Level'] / (df['Quality_of_Sleep'] + 1e-5)
-df['Sleep_Heart_Ratio'] = df['Sleep_Duration'] * df['Heart_Rate']
-df['Sleep_Steps_Ratio'] = df['Sleep_Duration'] * df['Daily_Steps']
-df['Sleep_Stress_Ratio'] = df['Sleep_Duration'] * df['Stress_Level']
-df['BMI_Activity'] = df['BMI_Category'] * df['Physical_Activity_Level']
-df['Pulse_Pressure'] = df['Systolic_BP'] - df['Diastolic_BP']
-df['Sqrt_Sleep'] = np.sqrt(df['Sleep_Duration'])
+from imblearn.combine import SMOTETomek
+
+# Original: Healthy=219, Apnea=78, Insomnia=77
+smote_tomek = SMOTETomek(random_state=42)
+X_resampled, y_resampled = smote_tomek.fit_resample(X_train, y_train)
 ```
+
+### 5. Dual Pipeline Processing
+
+#### Pipeline 1: Statistical
+```python
+# Scaling: RobustScaler (median/IQR normalization)
+# Selection: Mutual Information (relevance filtering)
+# Reduction: LDA (linear projection)
+```
+
+#### Pipeline 2: Wrapper-Based
+```python
+# Scaling: MinMaxScaler ([0,1] normalization)
+# Selection: Boruta (shadow feature comparison)
+# Reduction: Autoencoder (non-linear latent space)
+```
+
+### 6. Model Training & Validation
+- **9 Classifiers**: Extra Trees, KNN, XGBoost, LightGBM, MLP, etc.
+- **Hyperparameter Tuning**: RandomizedSearchCV
+- **Cross-Validation**: Stratified 8-fold
+- **Statistical Testing**: Wilcoxon Signed-Rank (p < 0.05)
 
 ---
 
-### 3️⃣ Class Imbalance Handling
 
-**Original Distribution**:
-- Healthy: 219 samples
-- Sleep Apnea: 78 samples
-- Insomnia: 77 samples
+### Setup
 
 
 
----
-
-### 4️⃣ Dual-Pipeline Architecture
-
-<div align="center">
-
-| Pipeline 1: Statistical Engineering | Pipeline 2: Wrapper-Based Engineering |
-|:-----------------------------------:|:-------------------------------------:|
-| **Target**: Linear & Distance Models | **Target**: Tree-Based Ensembles |
-| RobustScaler (IQR-based) | MinMaxScaler (0-1 range) |
-| Mutual Information Selection | Boruta Algorithm Selection |
-| LDA Dimensionality Reduction | Autoencoder Compression |
-
-
-</div>
-
-
----
-
-## 📊 Results
-
-### 🏆 Main Performance Table
-
-| Model | Pipeline | Accuracy | F1 Score | Precision | Recall |
-|-------|----------|----------|----------|-----------|--------|
-| **Extra Trees** | Pipeline 2 (Boruta + SMOTETomek) | **98.67%** | **97.84%** | **98.04%** | **97.78%** |
-| **KNN** | Pipeline 1 (MI + SMOTETomek) | **98.67%** | **97.85%** | **97.92%** | **97.92%** |
-| **XGBoost** | Pipeline 1 (MI + SMOTETomek) | **98.67%** | **97.85%** | **97.92%** | **97.92%** |
-| **LightGBM** | Pipeline 1 (MI + SMOTETomek) | **98.67%** | **97.85%** | **97.92%** | **97.92%** |
-| Logistic Regression | Pipeline 2 (MinMaxScaler) | 97.33% | 95.66% | 96.30% | 95.56% |
-| MLP Neural Net | Pipeline 1 (MI Features) | 96.00% | 93.55% | 93.61% | 93.61% |
-
----
-
-### 📈 SOTA Comparison (2024-2025)
-```
-┌─────────────────────────────────────────────────────────┐
-│  98.67% │████████████████████████████████████│ Ovi et al. (2026) - Ours
-│  97.33% │███████████████████████████████████ │ Rahman et al. (2025)
-│  96.88% │██████████████████████████████████  │ Monowar et al. (2025)
-│  96.00% │█████████████████████████████████   │ Satyavathi et al. (2025)
-│  92.92% │████████████████████████████        │ Alshammari et al. (2024)
-└─────────────────────────────────────────────────────────┘
-```
-
-**Our improvement**: +1.34% over previous SOTA (2025)
-
----
-
-### 🔬 Ablation Study
-
-| Experiment | Configuration | Accuracy | Impact |
-|------------|--------------|----------|--------|
-| Baseline | Raw features + KNN | 96.00% | - |
-| + Normalization | RobustScaler + KNN | 96.00% | Minimal |
-| + SMOTETomek | Balanced + KNN | **98.67%** | +2.67% ⬆️ |
-| + Boruta (Trees) | Boruta + Extra Trees | **98.67%** | +2.67% ⬆️ |
-| MLP without scaling | Raw + MLP | 61.30% | - |
-| MLP with scaling | RobustScaler + MLP | 96.00% | +34.70% ⬆️ |
-
-**Key Findings**:
-- ✅ SMOTETomek is **essential** for KNN (2.67% boost)
-- ✅ Normalization is **critical** for neural networks (34.7% boost)
-- ✅ Boruta outperforms MI for tree-based models
-- ✅ MI is computationally cheaper for linear models
-
----
-
-### 📉 Statistical Validation
-
-**Wilcoxon Signed-Rank Test** on 8-fold cross-validation:
-```
-p-value: 0.00391 (p < 0.05)
-✅ Result: Performance improvement is statistically significant
-```
-
----
-
-## 📂 Repository Structure
-```
-sleep-disorder/
-│
-├── 📁 data/
-│   ├── sleep_health_lifestyle_dataset.csv    # Original dataset
-│   └── processed/
-│       └── smote_tomek_balanced.csv           # Resampled data
-│
-├── 📓 notebooks/
-│   ├── 1_EDA_Feature_Engineering.ipynb        # Preprocessing & interaction features
-│   ├── 2_Pipeline1_Statistical.ipynb          # RobustScaler + MI + LDA
-│   ├── 3_Pipeline2_Wrapper.ipynb              # MinMaxScaler + Boruta + Autoencoder
-│   └── 4_Evaluation_Ablation.ipynb            # SOTA comparison & Wilcoxon test
-│
-├── 💾 models/
-│   ├── saved_models/
-│   │   ├── extra_trees_best.pkl               # Best Extra Trees model
-│   │   └── knn_best.pkl                       # Best KNN model
-│   └── encoder_weights/
-│       └── autoencoder.h5                     # Trained autoencoder
-│
-├── 🐍 src/
-│   ├── preprocessing.py                       # BP split, encoding functions
-│   ├── feature_engineering.py                 # Interaction feature creation
-│   ├── pipelines.py                           # Pipeline 1 & 2 implementations
-│   └── metrics.py                             # Custom evaluation metrics
-│
-├── 📊 results/
-│   ├── confusion_matrices/                    # CM visualizations (PNG)
-│   ├── feature_importance_plots/              # Boruta & tree importance
-│   └── performance_comparison.csv             # SOTA benchmark table
-│
-├── 📄 requirements.txt                        # Python dependencies
-├── 📄 LICENSE                                 # MIT License
-└── 📖 README.md                               # This file
-```
-
----
-
-## 🚀 Quick Start
-
-### Installation
-```bash
-# Clone the repository
-git clone https://github.com/Miftahul-adib/sleep-disorder.git
-cd sleep-disorder
-
-# Create virtual environment (recommended)
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-**Key Dependencies:**
+### Required Packages
 ```txt
-scikit-learn>=1.3.0
-imbalanced-learn>=0.11.0
-boruta>=0.3
-xgboost>=2.0.0
-lightgbm>=4.0.0
-tensorflow>=2.13.0
-pandas>=2.0.0
-numpy>=1.24.0
-matplotlib>=3.7.0
-seaborn>=0.12.0
+numpy>=1.21.0
+pandas>=1.3.0
+scikit-learn>=1.0.0
+imbalanced-learn>=0.9.0
+xgboost>=1.5.0
+lightgbm>=3.3.0
+boruta>=0.3.0
+tensorflow>=2.8.0  # For Autoencoders
+matplotlib>=3.4.0
+seaborn>=0.11.0
+scipy>=1.7.0
 ```
 
 ---
 
 
 
-## 🔍 Key Insights
 
-### 💡 Why Two Pipelines?
+## 📈 Results
 
-Different ML models have different feature preferences:
+### Top Performing Models
 
-| Model Type | Optimal Features | Best Pipeline |
-|------------|------------------|---------------|
-| **Distance-based** (KNN) | Scaled, linearly separable | Pipeline 1 (MI + LDA) |
-| **Linear** (LogReg, SVM) | Uncorrelated, normalized | Pipeline 1 (MI + LDA) |
-| **Tree-based** (RF, XGB) | Non-linear interactions, all-relevant | Pipeline 2 (Boruta + AE) |
-| **Neural Nets** (MLP) | Normalized, reduced dimensions | Either (depends on architecture) |
+| Pipeline | Model | Configuration | Accuracy | F1 Score | Recall | Precision |
+|----------|-------|---------------|----------|----------|--------|-----------|
+| 1 | K-Nearest Neighbors | MI + SMOTETomek | **98.67%** | 97.85% | 97.92% | 97.92% |
+| 1 | XGBoost | MI + SMOTETomek | **98.67%** | 97.85% | 97.92% | 97.92% |
+| 1 | LightGBM | MI + SMOTETomek | **98.67%** | 97.85% | 97.92% | 97.92% |
+| 2 | Extra Trees | Boruta + SMOTETomek | **98.67%** | 97.84% | 97.78% | 98.04% |
 
-### 🎯 Feature Importance (Extra Trees - Pipeline 2)
-```
-Top 10 Most Important Features:
-1. Sleep_Heart_Ratio          ████████████████████ 18.2%
-2. Pulse_Pressure              ███████████████████  16.7%
-3. Systolic_BP                 ██████████████       13.4%
-4. Stress_Sleep_Interaction    ████████████         11.8%
-5. BMI_Activity                ██████████            9.3%
-6. Quality_of_Sleep            ████████              7.6%
-7. Sleep_Duration              ███████               6.9%
-8. Diastolic_BP                ██████                5.4%
-9. Heart_Rate                  █████                 4.8%
-10. Daily_Steps                ████                  3.9%
-```
+### Performance Visualization
+
+<p align="center">
+  <img src="assets/confusion_matrix.png" width="45%" />
+  <img src="assets/roc_curves.png" width="45%" />
+</p>
+
+### Statistical Validation
+
+- **Wilcoxon Signed-Rank Test**: p = 0.00391 (W = 36.0)
+- **Significance Level**: p < 0.05 ✓
+- **Conclusion**: Performance gains are statistically significant
+
+### Computational Efficiency
+
+- **Inference Latency**: < 400ms per prediction
+- **Training Time (Best Model)**: 1.04 seconds (KNN, Pipeline 1)
+- **Suitable for**: Real-time clinical monitoring
 
 ---
 
+## 🏆 Benchmarking
 
+Our framework sets a new state-of-the-art on the Sleep Health and Lifestyle Dataset:
 
-## 📜 Citation
+| Study | Year | Model | Accuracy |
+|-------|------|-------|----------|
+| **This Work** | **2026** | **Extra Trees (Pipeline 2)** | **98.67%** |
+| Rahman et al. | 2025 | Gradient Boosting | 97.33% |
+| Monowar et al. | 2025 | Ensemble Model | 96.88% |
+| Satyavathi et al. | 2025 | Decision Tree | 96.00% |
+| Alshammari et al. | 2024 | ANN | 92.92% |
+| Hidayat et al. | 2023 | Random Forest | 88.00% |
 
-If you find this work useful, please cite our paper:
+**Improvement**: +1.34 percentage points over previous best
+
+---
+
+## 📄 Citation
+
+If you use this code or methodology in your research, please cite:
 ```bibtex
-@article{ovi2026dualpipeline,
-  title={A Dual Pipeline Machine Learning Framework for Automated Multi-Class Sleep Disorder Screening Using Hybrid Resampling and Ensemble Learning},
+@article{ovi2026dual,
+  title={A Dual Pipeline Machine Learning Framework for Automated Multi Class Sleep Disorder Screening Using Hybrid Resampling and Ensemble Learning},
   author={Ovi, Md Sultanul Islam and Munfa, Muhsina Tarannum and Adib, Miftahul Alam and Hasan, Syed Sabbir},
-  institution={George Mason University and Shahjalal University of Science and Technology},
   year={2026}
 }
 ```
 
 ---
 
-## 📄 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📧 Contact
-
-For questions or collaborations:
+## 👥 Authors
 
 - **Md Sultanul Islam Ovi** - George Mason University
-- **Miftahul Alam Adib** - [GitHub Profile](https://github.com/Miftahul-adib)
+- **Muhsina Tarannum Munfa** - Metropolitan University, Sylhet
+- **Miftahul Alam Adib** - Shahjalal University of Science and Technology
+- **Syed Sabbir Hasan** - Shahjalal University of Science and Technology
 
 ---
 
-## 🙏 Acknowledgments
+## 📝 License
 
-- Sleep Health & Lifestyle Dataset contributors
-- Scikit-learn, XGBoost, and LightGBM communities
-- George Mason University & Shahjalal University of Science and Technology
+This project is licensed under the MIT License 
+
+
 
 ---
 
-<div align="center">
+## 📞 Contact
 
-**⭐ Star this repository if you find it helpful!**
+For questions or collaboration inquiries:
 
-Made with ❤️ by the Sleep Disorder Research Team
+- **Email**: [your.email@university.edu]
+- **Issues**: [GitHub Issues](https://github.com/yourusername/sleep-disorder-screening/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/yourusername/sleep-disorder-screening/discussions)
 
-</div>
+---
+
+
+
+## 📚 Additional Resources
+
+- [Paper (arXiv)](https://arxiv.org/abs/xxxx.xxxxx)
+
+
+---
+
+<p align="center">
+  <strong>⭐ Star this repo if you find it useful! ⭐</strong>
+</p>
