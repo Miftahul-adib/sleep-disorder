@@ -1,5 +1,6 @@
-### 📄 Paper
+## 📄 Paper
 
+---
 
 ### Title
 **"A Dual Pipeline Machine Learning Framework for Automated Multi-Class Sleep Disorder Screening Using Hybrid Resampling and Ensemble Learning"** (2026).
