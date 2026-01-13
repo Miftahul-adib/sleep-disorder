@@ -42,7 +42,7 @@ risk stratification.
 
 ---
 
-## 🔍 Overview
+## Overview
 
 Sleep disorders affect millions globally, yet accurate multi-class screening remains challenging. This framework addresses the problem of classifying patients into three categories:
 
