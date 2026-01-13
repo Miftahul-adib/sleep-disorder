@@ -20,6 +20,7 @@
 - **Miftahul Alam Adib** 
 - **Syed Sabbir Hasan**
 
+---
 
 #### Abstract
 
@@ -38,7 +39,6 @@ models, with inference latencies maintained below 400 milliseconds. Thus, this r
 proposes the Dual Pipeline Framework as a highly effective method, offering superior
 classification performance and computational efficiency for automated, non invasive
 risk stratification.
-
 
 ---
 
@@ -71,9 +71,8 @@ Input Data
 
 This dual approach ensures both linear separability and non-linear interaction capture.
 
----
 
-## ✨ Key Features
+##  Key Features
 
 #### 1. **Dual-Pipeline Architecture**
 - **Pipeline 1**: Optimizes for linear dependencies using statistical methods
@@ -94,9 +93,9 @@ Addresses severe class imbalance (Healthy: 219, Apnea: 78, Insomnia: 77):
 - Wilcoxon Signed-Rank Test for statistical significance
 - Multiple performance metrics (Accuracy, F1, Recall, Precision)
 
----
 
-### 📊 Dataset
+
+###  Dataset
 
 **Sleep Health and Lifestyle Dataset** (Sourced from Kaggle)
 * **Samples**: 374 clinical entries.
@@ -105,8 +104,7 @@ Addresses severe class imbalance (Healthy: 219, Apnea: 78, Insomnia: 77):
 
 
 
----
-### 🛠 Methodology
+###  Methodology
 
 
 <p align="center">
@@ -156,7 +154,7 @@ We applied **SMOTETomek** to handle class imbalance, resampling the minority cla
 - **Cross-Validation**: Stratified 8-fold
 - **Statistical Testing**: Wilcoxon Signed-Rank (p < 0.05)
 
----
+
 
 
 
@@ -209,7 +207,7 @@ We applied **SMOTETomek** to handle class imbalance, resampling the minority cla
 - **Training Time (Best Model)**: 1.04 seconds (KNN, Pipeline 1)
 - **Suitable for**: Real-time clinical monitoring
 
----
+
 
 
 
@@ -257,13 +255,7 @@ This project is licensed under the MIT License
 
 
 
----
 
-
-
-
-
----
 
 <p align="center">
   <strong>⭐ Star this repo if you find it useful! ⭐</strong>
