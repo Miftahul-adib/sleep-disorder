@@ -1,9 +1,7 @@
 # A Multi Class Sleep Disorder Screening Using Hybrid Resampling and Ensemble Learning
 
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Accuracy](https://img.shields.io/badge/Accuracy-98.67%25-brightgreen.svg)](https://github.com/yourusername/sleep-disorder-screening)
+
 
 > **State-of-the-Art Solution for Multi-Class Sleep Disorder Classification**
 
