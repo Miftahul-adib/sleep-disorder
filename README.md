@@ -183,12 +183,6 @@ We applied **SMOTETomek** to handle class imbalance, resampling the minority cla
 | AdaBoost | Autoencoder | 94.667% | 93.780% | 94.179% | 93.669% |
 | MLP Classifier | Autoencoder + SMOTETomek | 93.333% | 91.676% | 93.422% | 90.278% |
 | LightGBM | MinMaxScaler | 97.333% | 95.694% | 95.694% | 95.694% |
-### Performance Visualization
-
-<p align="center">
-  <img src="assets/confusion_matrix.png" width="45%" />
-  <img src="assets/roc_curves.png" width="45%" />
-</p>
 
 ### Statistical Validation
 
