@@ -97,7 +97,7 @@ Addresses severe class imbalance (Healthy: 219, Apnea: 78, Insomnia: 77):
 
 
 <p align="center">
-  <img src="Images/methodology_flowchart_detailed.webp" alt="Methodology Flowchart" width="1700">
+  <img src="Images/methodology_flowchart_detailed.webp" alt="Methodology Flowchart" width="1000">
 </p>
 
 ### 1. Data Preprocessing
