@@ -188,56 +188,10 @@ X_resampled, y_resampled = smt.fit_resample(X_train, y_train)
 | RobustScaler (IQR-based) | MinMaxScaler (0-1 range) |
 | Mutual Information Selection | Boruta Algorithm Selection |
 | LDA Dimensionality Reduction | Autoencoder Compression |
-| ✅ KNN, Logistic Regression, XGBoost | ✅ Extra Trees, LightGBM |
+
 
 </div>
 
-#### Pipeline 1 Implementation:
-```python
-from sklearn.preprocessing import RobustScaler
-from sklearn.feature_selection import SelectKBest, mutual_info_classif
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-
-# Statistical Pipeline
-pipeline_1 = Pipeline([
-    ('scaler', RobustScaler()),
-    ('selector', SelectKBest(mutual_info_classif, k=15)),
-    ('lda', LinearDiscriminantAnalysis(n_components=2)),
-    ('classifier', KNeighborsClassifier(n_neighbors=5))
-])
-```
-
-#### Pipeline 2 Implementation:
-```python
-from sklearn.preprocessing import MinMaxScaler
-from boruta import BorutaPy
-from sklearn.ensemble import RandomForestClassifier
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Dense
-
-# Boruta Selection
-rf = RandomForestClassifier(n_jobs=-1, max_depth=5, random_state=42)
-boruta = BorutaPy(rf, n_estimators='auto', verbose=0, random_state=42)
-boruta.fit(X_scaled, y_train)
-X_boruta = boruta.transform(X_scaled)
-
-# Autoencoder for Dimensionality Reduction
-input_dim = X_boruta.shape[1]
-encoding_dim = 10
-
-input_layer = Input(shape=(input_dim,))
-encoded = Dense(encoding_dim, activation='relu')(input_layer)
-decoded = Dense(input_dim, activation='sigmoid')(encoded)
-
-autoencoder = Model(input_layer, decoded)
-encoder = Model(input_layer, encoded)
-
-autoencoder.compile(optimizer='adam', loss='mse')
-autoencoder.fit(X_boruta, X_boruta, epochs=50, batch_size=32, verbose=0)
-
-# Extract encoded features
-X_encoded = encoder.predict(X_boruta)
-```
 
 ---
 
