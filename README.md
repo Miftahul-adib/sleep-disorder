@@ -23,7 +23,22 @@
 
 #### Abstract
 
-This project implements a machine learning framework to classify sleep disorders—None, Insomnia, and Sleep Apnea—using the Sleep Health and Lifestyle Dataset. By combining advanced feature engineering, such as blood pressure decomposition and interaction ratios, with SMOTETomek resampling, the pipeline effectively addresses class imbalance and feature importance. Benchmarking across 10 algorithms revealed that K-Nearest Neighbors, XGBoost, and LightGBM achieved a peak accuracy of 98.67% when utilizing a Mutual Information-based selection strategy.
+Accurate classification of sleep disorders, particularly insomnia and sleep apnea,
+is vital for mitigating long term health risks and improving patient quality of life.
+The traditional reliance on clinical sleep studies is resource intensive and lacks scalability for population level screening. This paper introduces a Dual Pipeline Machine
+Learning Framework for analyzing and diagnosing multi class sleep disorders using
+the Sleep Health and Lifestyle Dataset. We structured the methodology around two
+parallel processing streams: a statistical pipeline focusing on linear separability via
+Mutual Information and Linear Discriminant Analysis, and a wrapper based pipeline
+leveraging Boruta selection and Autoencoders. To address severe class imbalance, we
+utilized a hybrid SMOTETomek resampling strategy. Experimental results demonstrate that the Extra Trees and K Nearest Neighbors classifiers achieved a state of
+the art accuracy of 98.67%, exceeding recent benchmarks. Furthermore, the Wilcoxon
+Signed Rank Test confirmed statistically significant performance gains over baseline
+models, with inference latencies maintained below 400 milliseconds. Thus, this research
+proposes the Dual Pipeline Framework as a highly effective method, offering superior
+classification performance and computational efficiency for automated, non invasive
+risk stratification.
+
 
 ---
 
