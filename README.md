@@ -44,7 +44,7 @@ risk stratification.
 ### Methodology
 
 <p align="center">
-  <img src="Images/methodology_flowchart_detailed.webp" alt="Methodology Flowchart" width="1000">
+  <img src="Images/methodology_flowchart_detailed.jpg" alt="Methodology Flowchart" width="1000">
 </p>
 
 
