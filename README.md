@@ -11,31 +11,17 @@ This repository contains the official implementation of **"A Dual Pipeline Machi
 
 Our framework achieves **98.67% accuracy** on the Sleep Health and Lifestyle Dataset, surpassing current benchmarks through a novel dual-pipeline architecture that captures both linear and non-linear feature dependencies.
 
----
-
-## 🎯 Highlights
-
-- ** State-of-the-Art Performance**: 98.67% accuracy (vs. 97.33% previous best)
-- ** Novel Architecture**: Dual-pipeline design for comprehensive feature processing
-- ** Advanced Balancing**: SMOTETomek hybrid resampling for class imbalance
-- ** Statistical Validation**: Wilcoxon Signed-Rank Test confirms significance (p=0.00391)
-- ** Real-Time Ready**: Inference under 400ms for clinical deployment
 
 ---
 
-## 📋 Table of Contents
+## 👥 Authors
 
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Dataset](#dataset)
-- [Methodology](#methodology)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Results](#results)
-- [Benchmarking](#benchmarking)
-- [Citation](#citation)
-- [Authors](#authors)
-- [License](#license)
+- **Md Sultanul Islam Ovi** - George Mason University
+- **Muhsina Tarannum Munfa** - Metropolitan University, Sylhet
+- **Miftahul Alam Adib** - Shahjalal University of Science and Technology
+- **Syed Sabbir Hasan** - Shahjalal University of Science and Technology
+
+
 
 ---
 
@@ -46,6 +32,8 @@ Sleep disorders affect millions globally, yet accurate multi-class screening rem
 - **Insomnia** (Class 0)
 - **Healthy/None** (Class 1)
 - **Sleep Apnea** (Class 2)
+
+
 
 ### Architecture Philosophy
 
@@ -92,21 +80,14 @@ Addresses severe class imbalance (Healthy: 219, Apnea: 78, Insomnia: 77):
 
 ## 📊 Dataset
 
-**Sleep Health and Lifestyle Dataset**
+[cite_start]**Sleep Health and Lifestyle Dataset** (Sourced from Kaggle [cite: 123])
+* **Samples**: 374 clinical entries.
+* [cite_start]**Target Classes**: `None` (219), `Sleep Apnea` (78), `Insomnia` (77)[cite: 137].
+* [cite_start]**Features**: 13 attributes including Sleep Duration, BMI, Blood Pressure, and physical activity levels[cite: 125, 127].
 
-The dataset integrates:
-- Physiological parameters (heart rate, blood pressure, sleep duration)
-- Lifestyle factors (physical activity, stress levels, BMI)
-- Demographic information (age, gender, occupation)
 
-**Preprocessing Steps**:
-1. Data integrity verification (zero null values confirmed)
-2. Occupation grouping to reduce sparsity
-3. Label encoding for ordinal variables
-4. One-hot encoding for nominal features
 
 ---
-
 ## 🛠 Methodology
 
 ### 1. Data Preprocessing
@@ -115,25 +96,23 @@ The dataset integrates:
 # Occupation grouping applied
 # Encoding: Label (ordinal) + One-Hot (nominal)
 ```
-
-### 2. Feature Engineering
 - Created 8 interaction features
 - Tree-based importance analysis
 - Information gain ranking
 
-### 3. Train-Test Split
+### 2. Train-Test Split
 - **80/20 stratified split** preserving class distribution
 
-### 4. Class Balancing
-```python
-from imblearn.combine import SMOTETomek
+### 3. Class Balancing
+We applied **SMOTETomek** to handle class imbalance, resampling the minority classes (Insomnia, Sleep Apnea) to align with the majority class (None).
 
-# Original: Healthy=219, Apnea=78, Insomnia=77
-smote_tomek = SMOTETomek(random_state=42)
-X_resampled, y_resampled = smote_tomek.fit_resample(X_train, y_train)
-```
+| Classes | Original Count | Resampled Count |
+| :--- | :---: | :---: |
+| Insomnia (0) | 62 | 175 |
+| None (1) | 175 | 173 |
+| Sleep Apnea (2) | 62 | 171 |
 
-### 5. Dual Pipeline Processing
+### 4. Dual Pipeline Processing
 
 #### Pipeline 1: Statistical
 ```python
@@ -149,8 +128,8 @@ X_resampled, y_resampled = smote_tomek.fit_resample(X_train, y_train)
 # Reduction: Autoencoder (non-linear latent space)
 ```
 
-### 6. Model Training & Validation
-- **9 Classifiers**: Extra Trees, KNN, XGBoost, LightGBM, MLP, etc.
+### 5. Model Training & Validation
+- **9 Classifiers**: Logistic Regression, K-Nearest Neighbors, Random Forest, XGBoost, Gradient Boosting, Extra Trees, AdaBoost, MLP Classifier, LightGBM
 - **Hyperparameter Tuning**: RandomizedSearchCV
 - **Cross-Validation**: Stratified 8-fold
 - **Statistical Testing**: Wilcoxon Signed-Rank (p < 0.05)
@@ -186,13 +165,35 @@ scipy>=1.7.0
 
 ### Top Performing Models
 
-| Pipeline | Model | Configuration | Accuracy | F1 Score | Recall | Precision |
-|----------|-------|---------------|----------|----------|--------|-----------|
-| 1 | K-Nearest Neighbors | MI + SMOTETomek | **98.67%** | 97.85% | 97.92% | 97.92% |
-| 1 | XGBoost | MI + SMOTETomek | **98.67%** | 97.85% | 97.92% | 97.92% |
-| 1 | LightGBM | MI + SMOTETomek | **98.67%** | 97.85% | 97.92% | 97.92% |
-| 2 | Extra Trees | Boruta + SMOTETomek | **98.67%** | 97.84% | 97.78% | 98.04% |
+### Optimal performance metrics for Pipeline 1 utilizing statistical feature engineering and hybrid resampling strategies
 
+| ML Model | Configuration | Accuracy | F1 Score | Recall | Precision |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Logistic Regression | RobustScaler + SMOTETomek | 96.000% | 94.379% | 94.798% | 94.737% |
+| K-Nearest Neighbors | MI + SMOTETomek | 98.667% | 97.850% | 97.917% | 97.917% |
+| Random Forest | LDA | 96.000% | 93.521% | 93.472% | 93.698% |
+| XGBoost Model | MI + SMOTETomek | 98.667% | 97.850% | 97.917% | 97.917% |
+| Gradient Boosting | RobustScaler | 96.000% | 94.177% | 93.611% | 94.815% |
+| Extra Trees | RobustScaler | 97.333% | 95.658% | 95.556% | 96.296% |
+| AdaBoost | MI | 97.333% | 95.694% | 95.694% | 95.694% |
+| MLP Classifier | MI | 96.000% | 93.548% | 93.611% | 93.611% |
+| LightGBM | MI + SMOTETomek | 98.667% | 97.850% | 97.917% | 97.917% |
+
+<br>
+
+### Optimal performance metrics for Pipeline 2 utilizing wrapper-based feature selection and non-linear dimensionality reduction
+
+| ML Model | Configuration | Accuracy | F1 Score | Recall | Precision |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Logistic Regression | MinMaxScaler | 97.333% | 95.658% | 95.556% | 96.296% |
+| K-Nearest Neighbors | Autoencoder | 93.333% | 92.324% | 93.422% | 91.799% |
+| Random Forest | MinMaxScaler + SMOTETomek | 97.333% | 95.658% | 95.556% | 96.296% |
+| XGBoost Model | MinMaxScaler + SMOTETomek | 97.333% | 95.694% | 95.694% | 95.694% |
+| Gradient Boosting | Boruta | 96.000% | 93.521% | 93.472% | 93.698% |
+| Extra Trees | Boruta + SMOTETomek | 98.667% | 97.840% | 97.778% | 98.039% |
+| AdaBoost | Autoencoder | 94.667% | 93.780% | 94.179% | 93.669% |
+| MLP Classifier | Autoencoder + SMOTETomek | 93.333% | 91.676% | 93.422% | 90.278% |
+| LightGBM | MinMaxScaler | 97.333% | 95.694% | 95.694% | 95.694% |
 ### Performance Visualization
 
 <p align="center">
@@ -242,16 +243,7 @@ If you use this code or methodology in your research, please cite:
 }
 ```
 
----
 
-## 👥 Authors
-
-- **Md Sultanul Islam Ovi** - George Mason University
-- **Muhsina Tarannum Munfa** - Metropolitan University, Sylhet
-- **Miftahul Alam Adib** - Shahjalal University of Science and Technology
-- **Syed Sabbir Hasan** - Shahjalal University of Science and Technology
-
----
 
 ## 📝 License
 
