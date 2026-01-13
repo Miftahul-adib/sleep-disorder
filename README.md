@@ -13,7 +13,7 @@
 
 ---
 
-#### 👥 Authors
+#### Authors
 
 - **Md Sultanul Islam Ovi** 
 - **Muhsina Tarannum Munfa** 
