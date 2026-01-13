@@ -24,6 +24,7 @@
 #### Abstract
 
 This project implements a machine learning framework to classify sleep disorders—None, Insomnia, and Sleep Apnea—using the Sleep Health and Lifestyle Dataset. By combining advanced feature engineering, such as blood pressure decomposition and interaction ratios, with SMOTETomek resampling, the pipeline effectively addresses class imbalance and feature importance. Benchmarking across 10 algorithms revealed that K-Nearest Neighbors, XGBoost, and LightGBM achieved a peak accuracy of 98.67% when utilizing a Mutual Information-based selection strategy.
+
 ---
 
 ## 🔍 Overview
