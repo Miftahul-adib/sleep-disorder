@@ -101,8 +101,9 @@ Addresses severe class imbalance (Healthy: 219, Apnea: 78, Insomnia: 77):
 - Tree-based importance analysis
 - Information gain ranking
 <p align="center">
-  <img src="Images/Feature importance.png" alt="Feature importance" width="600">
+  <img src="Images/Feature importance.png" alt="Feature importance" width="6500">
 </p>
+
 ### 2. Train-Test Split
 - **80/20 stratified split** preserving class distribution
 
