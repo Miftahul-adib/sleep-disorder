@@ -1,13 +1,8 @@
-# A Multi Class Sleep Disorder Screening Using Hybrid Resampling and Ensemble Learning
+## 📄 Paper
 
 
-
-
-#### **State-of-the-Art Solution for Multi-Class Sleep Disorder Classification**
-
-This repository contains the official implementation of **"A Dual Pipeline Machine Learning Framework for Automated Multi-Class Sleep Disorder Screening Using Hybrid Resampling and Ensemble Learning"** (2026).
-
-Our framework achieves **98.67% accuracy** on the Sleep Health and Lifestyle Dataset, surpassing current benchmarks through a novel dual-pipeline architecture that captures both linear and non-linear feature dependencies.
+### Title
+**"A Dual Pipeline Machine Learning Framework for Automated Multi-Class Sleep Disorder Screening Using Hybrid Resampling and Ensemble Learning"** (2026).
 
 ---
 
@@ -19,10 +14,10 @@ Our framework achieves **98.67% accuracy** on the Sleep Health and Lifestyle Dat
 
 ## 👥 Authors
 
-- **Md Sultanul Islam Ovi** - George Mason University
-- **Muhsina Tarannum Munfa** - Metropolitan University, Sylhet
-- **Miftahul Alam Adib** - Shahjalal University of Science and Technology
-- **Syed Sabbir Hasan** - Shahjalal University of Science and Technology
+- **Md Sultanul Islam Ovi** 
+- **Muhsina Tarannum Munfa** 
+- **Miftahul Alam Adib** 
+- **Syed Sabbir Hasan**
 
 
 
@@ -36,6 +31,7 @@ Sleep disorders affect millions globally, yet accurate multi-class screening rem
 - **Healthy/None** (Class 1)
 - **Sleep Apnea** (Class 2)
 
+Our framework achieves **98.67% accuracy** on the Sleep Health and Lifestyle Dataset, surpassing current benchmarks through a novel dual-pipeline architecture that captures both linear and non-linear feature dependencies.
 
 
 ### Architecture Philosophy
