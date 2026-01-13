@@ -3,7 +3,7 @@
 
 
 
-> **State-of-the-Art Solution for Multi-Class Sleep Disorder Classification**
+#### **State-of-the-Art Solution for Multi-Class Sleep Disorder Classification**
 
 This repository contains the official implementation of **"A Dual Pipeline Machine Learning Framework for Automated Multi-Class Sleep Disorder Screening Using Hybrid Resampling and Ensemble Learning"** (2026).
 
