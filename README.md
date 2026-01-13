@@ -95,13 +95,18 @@ Addresses severe class imbalance (Healthy: 219, Apnea: 78, Insomnia: 77):
 ---
 ## 🛠 Methodology
 
+
+<p align="center">
+  <img src="Images/methodology_flowchart_detailed.webp" alt="Methodology Flowchart" width="700">
+</p>
+
 ### 1. Data Preprocessing
 
 - Created 8 interaction features
 - Tree-based importance analysis
 - Information gain ranking
 <p align="center">
-  <img src="Images/Feature importance.png" alt="Feature importance" width="6500">
+  <img src="Images/Feature importance.png" alt="Feature importance" width="500">
 </p>
 
 ### 2. Train-Test Split
