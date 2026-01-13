@@ -85,10 +85,10 @@ Addresses severe class imbalance (Healthy: 219, Apnea: 78, Insomnia: 77):
 
 ## 📊 Dataset
 
-[cite_start]**Sleep Health and Lifestyle Dataset** (Sourced from Kaggle [cite: 123])
+**Sleep Health and Lifestyle Dataset** (Sourced from Kaggle)
 * **Samples**: 374 clinical entries.
-* [cite_start]**Target Classes**: `None` (219), `Sleep Apnea` (78), `Insomnia` (77)[cite: 137].
-* [cite_start]**Features**: 13 attributes including Sleep Duration, BMI, Blood Pressure, and physical activity levels[cite: 125, 127].
+* **Target Classes**: `None` (219), `Sleep Apnea` (78), `Insomnia` (77).
+* **Features**: 13 attributes including Sleep Duration, BMI, Blood Pressure, and physical activity levels.
 
 
 
@@ -96,11 +96,7 @@ Addresses severe class imbalance (Healthy: 219, Apnea: 78, Insomnia: 77):
 ## 🛠 Methodology
 
 ### 1. Data Preprocessing
-```python
-# Zero null values confirmed
-# Occupation grouping applied
-# Encoding: Label (ordinal) + One-Hot (nominal)
-```
+
 - Created 8 interaction features
 - Tree-based importance analysis
 - Information gain ranking
