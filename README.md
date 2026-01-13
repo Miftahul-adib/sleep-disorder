@@ -1,4 +1,7 @@
-# Dual-Pipeline Framework for Sleep Disorder Screening
+# A Dual Pipeline Machine Learning Framework for
+Automated Multi Class Sleep Disorder Screening
+Using Hybrid Resampling and Ensemble Learning
+
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
