@@ -35,7 +35,7 @@ risk stratification.
 
 ### Dataset
 
-**Sleep Health and Lifestyle Dataset** (Sourced from Kaggle) [ADD KAGGLE LINK HERE]
+**Sleep Health and Lifestyle Dataset** (Sourced from Kaggle) [(https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset)]
 
 - **Samples**: 374 clinical entries.
 - **Target Classes**: `None` (219), `Sleep Apnea` (78), `Insomnia` (77).
